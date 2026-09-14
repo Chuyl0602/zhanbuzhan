@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'" />
+  <title>粘不粘悬浮图标</title>
+  <link rel="stylesheet" href="bubble.css" />
+</head>
+<body>
+  <button id="toggle" type="button" aria-label="展开素材库，拖动可移动" aria-expanded="false" title="点击展开素材库 · 拖动可移动">
+    <img class="cat closed" src="../assets/bubble-closed.png" width="78" height="78" alt="" draggable="false" />
+    <img class="cat opened" src="../assets/bubble-open.png" width="78" height="78" alt="" draggable="false" />
+  </button>
+  <script src="bubble.js"></script>
+</body>
+</html>

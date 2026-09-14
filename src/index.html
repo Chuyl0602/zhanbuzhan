@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'" />
+  <meta name="theme-color" content="#f4f6f6" />
+  <title>粘不粘</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon-defs" aria-hidden="true">
+    <symbol id="icon-mark" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-clipboard" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="16" rx="2"/><rect x="9" y="2" width="6" height="5" rx="1"/><path d="M9 12h6M9 16h4"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-text" viewBox="0 0 24 24"><path d="M4 6h16M8 6v13M16 6v13M6 19h4M14 19h4"/></symbol>
+    <symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m4 17 5-5 4 4 3-3 4 4"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 2.8 2.9 6 6.6 1-4.8 4.7 1.1 6.6-5.8-3.1-5.8 3.1 1.1-6.6-4.8-4.7 6.6-1z"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="m9 3 6 0-1 6 4 4v2H6v-2l4-4zM12 15v7"/></symbol>
+    <symbol id="icon-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="icon-restore" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6M12 7v5l3 2"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M10 2h4l.5 2.3 2 1.2 2.3-.7 2 3.4-1.8 1.6v2.4l1.8 1.6-2 3.4-2.3-.7-2 1.2L14 22h-4l-.5-2.3-2-1.2-2.3.7-2-3.4L5 14.2v-2.4L3.2 10l2-3.4 2.3.7 2-1.2z"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+    <symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10H3z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+  </svg>
+  <div id="appShell" class="app-shell">
+    <header class="topbar">
+      <div class="drag-area"><img class="brand-mark" src="../assets/icon.png" alt="" /><strong class="brand">粘不粘</strong><span class="local-pill">本机</span></div>
+      <div class="window-actions">
+        <button id="settingsButton" class="icon-button" title="设置" aria-label="设置"><svg><use href="#icon-settings"/></svg></button>
+        <button id="hideButton" class="icon-button" title="收起面板" aria-label="收起面板"><svg><use href="#icon-close"/></svg></button>
+      </div>
+    </header>
+
+    <main id="onboarding" class="onboarding hidden">
+      <div class="sample-stack" aria-hidden="true"><div class="sample-sheet sample-picture"><div class="sample-grid"><span></span><span></span><span></span><span></span></div><div class="sample-caption">参考图 / 001</div></div><div class="sample-sheet sample-copy"><span class="sample-tick"></span><b>Prompt</b><i></i><i></i><i class="short"></i></div><svg class="sample-mark"><use href="#icon-mark"/></svg></div>
+      <h1>参考图和提示词，<br>都在手边。</h1>
+      <p class="onboarding-copy">选择一个本机文件夹。之后复制的图片、截图和文字，都能随手存进这里。</p>
+      <button id="chooseFolder" class="primary-button wide"><svg><use href="#icon-folder"/></svg><span>选择素材库文件夹</span><svg class="push-end"><use href="#icon-arrow"/></svg></button>
+      <p class="small-note">素材仅存于本机，之后可在设置中迁移。</p>
+    </main>
+
+    <main id="workspace" class="workspace hidden">
+      <div class="workspace-head"><h1>素材库</h1><span id="headCount" class="head-count"></span></div>
+      <div class="action-bar"><button id="collectButton" class="primary-button"><svg><use href="#icon-clipboard"/></svg><span>保存剪贴板</span></button><button id="newText" class="secondary-button"><svg><use href="#icon-text"/></svg><span>写文字</span></button><button id="importImages" class="secondary-button"><svg><use href="#icon-image"/></svg><span>导入图片</span></button><input id="imageFiles" class="visually-hidden" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp" multiple aria-label="选择图片文件" /></div>
+      <label class="search-wrap" for="search"><svg><use href="#icon-search"/></svg><input id="search" type="search" name="search" aria-label="搜索素材" placeholder="搜索名称、文字或标签…" autocomplete="off" /><kbd>Ctrl K</kbd></label>
+      <nav class="tabs" aria-label="素材分类">
+        <button data-tab="all" class="active" aria-current="page">全部</button><button data-tab="text">文字</button><button data-tab="image">图片</button><button data-tab="favorite">常用</button><button data-tab="trash">回收站</button>
+      </nav>
+      <div class="list-heading"><span id="listLabel">全部素材</span><span id="itemCount">0 条</span><button id="selectAll" class="list-action" type="button">全选</button><button id="emptyTrash" class="list-action danger hidden" type="button">清空回收站</button></div>
+      <section id="items" class="items" aria-live="polite"></section>
+      <div id="selectionBar" class="selection-bar hidden" aria-live="polite">
+        <strong id="selectionCount">已选 0 条</strong>
+        <button id="clearSelection" class="text-button">取消选择</button>
+        <button id="favoriteSelected" class="secondary-button compact">加入常用</button>
+        <button id="trashSelected" class="danger-button compact">移到回收站</button>
+      </div>
+    </main>
+  </div>
+
+  <div id="dialogBackdrop" class="modal-backdrop hidden">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head"><h2 id="modalTitle">编辑素材</h2><button id="closeModal" class="icon-button" aria-label="关闭弹窗"><svg><use href="#icon-close"/></svg></button></div>
+      <div id="modalBody"></div>
+    </section>
+  </div>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script src="ui.js"></script>
+</body>
+</html>

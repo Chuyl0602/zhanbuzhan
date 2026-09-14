@@ -1,0 +1,23 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { width: 82px; height: 82px; margin: 0; overflow: hidden; background: transparent; }
+body { display: grid; place-items: center; }
+button {
+  position: relative; width: 78px; height: 78px; padding: 0; border: 0; background: transparent;
+  cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+}
+button:hover { transform: scale(1.04); }
+button:active, button.dragging { cursor: grabbing; transform: scale(.96); }
+button:focus { outline: none; }
+button:focus-visible:not(.pointer-focus) { outline: 2px solid #2851a3; outline-offset: 0; border-radius: 12px; }
+.cat {
+  position: absolute; inset: 0; width: 78px; height: 78px; object-fit: contain;
+  pointer-events: none; filter: drop-shadow(0 5px 5px #17356855);
+  transition: opacity 210ms ease, transform 250ms cubic-bezier(.2,.8,.2,1);
+}
+.cat.closed { opacity: 1; transform: translateY(0) scale(1); }
+.cat.opened { opacity: 0; transform: translateY(4px) scale(.92); }
+button.open .cat.closed { opacity: 0; transform: translateY(-4px) scale(.92); }
+button.open .cat.opened { opacity: 1; transform: translateY(0) scale(1); }
+@media (prefers-reduced-motion: reduce) { button, .cat { transition: none; } }

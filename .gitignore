@@ -1,0 +1,27 @@
+# Dependencies and packaged applications
+node_modules/
+dist/
+installer/
+preview/
+build/
+
+# Local libraries, settings, logs, and test output
+*.sqlite
+*.sqlite-*
+config.json
+runtime.log
+*.log
+qa-*/
+qa-*.png
+.impeccable/
+
+# Other desktop files kept alongside this project
+wps-cloud-explorer-registry-backup/
+WPS云盘入口修复/
+
+# Windows and editors
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/

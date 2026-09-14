@@ -1,0 +1,50 @@
+{
+  "name": "zhantie",
+  "version": "0.3.1",
+  "private": true,
+  "description": "本地文字与图片素材粘贴板",
+  "main": "src/main.cjs",
+  "scripts": {
+    "prestart": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/create-icon.ps1",
+    "start": "electron .",
+    "test": "node --test test/*.test.cjs",
+    "package": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/create-icon.ps1 && electron-builder --dir --win --x64 --config.directories.output=dist",
+    "installer": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/create-icon.ps1 && electron-builder --win nsis --x64",
+    "preview": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/create-icon.ps1 && electron-builder --win portable --x64 --config.directories.output=preview",
+    "check": "node --check src/main.cjs && node --check src/store.cjs && node --check src/preload.cjs && node --check src/bubble-preload.cjs && node --check src/ui.js && node --check src/bubble.js"
+  },
+  "dependencies": {
+    "sql.js": "^1.13.0"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^44.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "local.zhantie.clipboard",
+    "productName": "粘不粘",
+    "asar": true,
+    "directories": {
+      "output": "installer"
+    },
+    "files": [
+      "package.json",
+      "src/**/*",
+      "assets/**/*",
+      "node_modules/sql.js/**/*",
+      "!**/test/**"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "粘不粘-Setup-${version}.${ext}"
+    }
+  }
+}
